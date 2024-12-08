@@ -1,4 +1,4 @@
 const config={
-    "url":"http://localhost:2001"//backend url
+    "url":"https://asksdperpproject-production.up.railway.app"//backend url
 }
 export default config
