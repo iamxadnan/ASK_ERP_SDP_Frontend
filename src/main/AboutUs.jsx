@@ -39,7 +39,7 @@ export default function AboutUs() {
                     <h6 title="Followers"><i className="fas fa-users"></i> <span className="followers">Student at KL University</span></h6>
                 </div>
                 <div className="button">
-                    <a href="#" className="btn" onMouseDown={follow}>LinkedIn <i className="fas fa-user-plus"></i></a>
+                    <a href="https://www.linkedin.com/in/adnanshariff119/" className="btn" onMouseDown={follow}>LinkedIn <i className="fas fa-user-plus"></i></a>
                 </div>
                 <div className="ds-info">
                     <div className="ds pens">
@@ -95,7 +95,7 @@ export default function AboutUs() {
                     <h6 title="Followers"><i className="fas fa-users"></i> <span className="followers">Student at KL University</span></h6>
                 </div>
                 <div className="button">
-                    <a href="#" className="btn" onMouseDown={follow}>LinkedIn <i className="fas fa-user-plus"></i></a>
+                    <a href="https://www.linkedin.com/in/kousalya-chilukuri-b5354a24b" className="btn" onMouseDown={follow}>LinkedIn <i className="fas fa-user-plus"></i></a>
                 </div>
                 <div className="ds-info">
                     <div className="ds pens">
@@ -151,7 +151,7 @@ export default function AboutUs() {
                     <h6 title="Followers"><i className="fas fa-users"></i> <span className="followers">Student at KL University</span></h6>
                 </div>
                 <div className="button">
-                    <a href="#" className="btn" onMouseDown={follow}>LinkedIn <i className="fas fa-user-plus"></i></a>
+                    <a href="https://www.linkedin.com/in/bhaviri-somsekhar-a4483a264/" className="btn" onMouseDown={follow}>LinkedIn <i className="fas fa-user-plus"></i></a>
                 </div>
                 <div className="ds-info">
                     <div className="ds pens">
