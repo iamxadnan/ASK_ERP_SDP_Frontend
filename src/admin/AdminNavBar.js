@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './AdminHome.css'
-import ViewLeaveRequests from './ViewLeaveRequests';
+
 export default function AdminNavBar() {
   return (
     <div style={{marginTop:'50px'}}>

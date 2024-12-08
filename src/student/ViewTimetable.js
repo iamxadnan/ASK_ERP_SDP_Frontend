@@ -10,7 +10,7 @@ const ViewTimetable = () => {
   // Retrieve studentId from session storage when the component loads
   useEffect(() => {
     const user = JSON.parse(sessionStorage.getItem("user"));
-    if (user && user.studentId) {
+    if (user) {
       setStudentId(user.studentId);
     } else {
       setErrorMessage("Student ID not found in session. Please log in again.");
@@ -76,16 +76,17 @@ const ViewTimetable = () => {
               </tr>
             </thead>
             <tbody>
-              {timetableEntries.map((entry, index) => (
-                <tr key={index}>
-                  <td>{entry.dayOfWeek}</td>
-                  <td>{entry.period.startTime} - {entry.period.endTime}</td>
-                  <td>{entry.classroom.roomNumber}</td>
-                  <td>{entry.course.courseName}</td>
-                  <td>{entry.faculty.firstname} {entry.faculty.lastname}</td>
-                </tr>
-              ))}
-            </tbody>
+  {timetableEntries.map((entry) => (
+    <tr key={`${entry.dayOfWeek}-${entry.period.startTime}-${entry.classroom.roomNumber}`}>
+      <td>{entry.dayOfWeek}</td>
+      <td>{entry.period.startTime} - {entry.period.endTime}</td>
+      <td>{entry.classroom.roomNumber}</td>
+      <td>{entry.course.courseName}</td>
+      <td>{entry.faculty.firstname} {entry.faculty.lastname}</td>
+    </tr>
+  ))}
+</tbody>
+
           </table>
         </div>
       )}

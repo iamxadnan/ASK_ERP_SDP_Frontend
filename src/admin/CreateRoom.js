@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import config from "../config";
-import AdminHome from "./AdminHome";
+
 import AdminNavBar from "./AdminNavBar";
 
 

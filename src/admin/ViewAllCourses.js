@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import config from '../config';
-import AdminNavBar from './AdminNavBar';
+
 
 const ViewAllCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -31,45 +31,50 @@ const ViewAllCourses = () => {
   return (
     <div>
       
-    <div style={{ marginTop: '100px', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Courses</h1>
-      {loading ? (
-        <p style={{ textAlign: 'center' }}>Loading courses...</p>
-      ) : error ? (
-        <p style={{ textAlign: 'center', color: 'red' }}>{error}</p>
-      ) : (
-        <div style={{ overflowX: 'auto' }}>
-          <table style={styles.table}>
-            <thead>
-              <tr>
-                <th style={styles.th}>Course Code</th>
-                <th style={styles.th}>Course Name</th>
-                <th style={styles.th}>Description</th>
-                <th style={styles.th}>Credits</th>
-              </tr>
-            </thead>
-            <tbody>
-              {courses.length > 0 ? (
-                courses.map((course) => (
-                  <tr key={course.courseCode} style={styles.row}>
-                    <td style={styles.td}>{course.courseCode}</td>
-                    <td style={styles.td}>{course.courseName}</td>
-                    <td style={styles.td}>{course.courseDesc}</td>
-                    <td style={styles.td}>{course.courseCredits}</td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="4" style={styles.td}>
-                    No courses available
-                  </td>
+      <div style={{ marginTop: '100px', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+  <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Courses</h1>
+  {(() => {
+    if (loading) {
+      return <p style={{ textAlign: 'center' }}>Loading courses...</p>;
+    }
+    if (error) {
+      return <p style={{ textAlign: 'center', color: 'red' }}>{error}</p>;
+    }
+    return (
+      <div style={{ overflowX: 'auto' }}>
+        <table style={styles.table}>
+          <thead>
+            <tr>
+              <th style={styles.th}>Course Code</th>
+              <th style={styles.th}>Course Name</th>
+              <th style={styles.th}>Description</th>
+              <th style={styles.th}>Credits</th>
+            </tr>
+          </thead>
+          <tbody>
+            {courses.length > 0 ? (
+              courses.map((course) => (
+                <tr key={course.courseCode} style={styles.row}>
+                  <td style={styles.td}>{course.courseCode}</td>
+                  <td style={styles.td}>{course.courseName}</td>
+                  <td style={styles.td}>{course.courseDesc}</td>
+                  <td style={styles.td}>{course.courseCredits}</td>
                 </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-      )}
-    </div>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4" style={styles.td}>
+                  No courses available
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    );
+  })()}
+</div>
+
     </div>
   );
 };
@@ -125,7 +130,6 @@ const globalStyles = `
 
 // Inject the keyframe animations into the DOM
 const styleSheet = document.createElement('style');
-styleSheet.type = 'text/css';
 styleSheet.innerText = globalStyles;
 document.head.appendChild(styleSheet);
 

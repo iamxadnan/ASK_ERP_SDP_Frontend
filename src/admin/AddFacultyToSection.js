@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import config from '../config';
-import FacultyNavBar from '../faculty/FacultyNavBar';
+
 import AdminNavBar from './AdminNavBar';
 
 const AddCourseFacultyRelation = () => {

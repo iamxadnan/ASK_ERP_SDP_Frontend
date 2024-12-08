@@ -163,29 +163,30 @@ const StudentHome = () => {
 
   const renderCalendar = (month) => {
     const days = Array.from({ length: month.days }, (_, i) => i + 1);
+  
     return (
       <div className="month" key={month.name}>
         <h3>{month.name}</h3>
         <div className="calendar-grid">
-          {days.map((day) => (
-            <div
-              key={day}
-              className={`calendar-cell ${
-                importantDates[month.name] && importantDates[month.name].some(d => d.date === day) ? 'highlighted' : ''
-              }`}
-              title={
-                importantDates[month.name] && importantDates[month.name].some(d => d.date === day)
-                  ? importantDates[month.name].find(d => d.date === day).event
-                  : ''
-              }
-            >
-              {day}
-            </div>
-          ))}
+          {days.map((day) => {
+            const dateDetails = importantDates[month.name]?.find(d => d.date === day);
+            const isHighlighted = dateDetails ? 'highlighted' : '';
+  
+            return (
+              <div
+                key={day}
+                className={`calendar-cell ${isHighlighted}`}
+                title={dateDetails?.event || ''}
+              >
+                {day}
+              </div>
+            );
+          })}
         </div>
       </div>
     );
   };
+  
 
   return (
     <div className="student-home">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import config from "../config";
 
 const UpdateProfile = () => {
   const location = useLocation();
@@ -19,7 +20,7 @@ const UpdateProfile = () => {
     // Optionally, fetch existing profile data
     if (email) {
       axios
-        .get(`http://localhost:2001/faculty/profile?email=${email}`)
+        .get(`${config.url}/faculty/profile?email=${email}`)
         .then((response) => {
           setProfileData((prev) => ({ ...prev, ...response.data }));
         })
@@ -39,7 +40,7 @@ const UpdateProfile = () => {
     try {
       console.log(profileData)
       const response = await axios.put(
-        "http://localhost:2001/faculty/update-profile",
+        `${config.url}/faculty/update-profile`,
         profileData
       );
       
@@ -51,68 +52,79 @@ const UpdateProfile = () => {
 
   return (
     <div className="update-profile" style={{ marginTop: "190px" }}>
-      <h2>Update Profile</h2>
-      <form className="form-container" onSubmit={handleSubmit}>
-        <label>
-          First Name:
-          <input
-            type="text"
-            name="firstname"
-            value={profileData.firstname}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Last Name:
-          <input
-            type="text"
-            name="lastname"
-            value={profileData.lastname}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Date of Birth:
-          <input
-            type="date"
-            name="dateOfBirth"
-            value={profileData.dateOfBirth}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Gender:
-          <select
-            name="gender"
-            value={profileData.gender}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={profileData.password}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <button className="submit-button" type="submit">
-          Update Profile
-        </button>
-      </form>
-      {responseMessage && <p>{responseMessage}</p>}
+  <h2>Update Profile</h2>
+  <form className="form-container" onSubmit={handleSubmit}>
+    <div className="form-group">
+      <label htmlFor="firstname">First Name:</label>
+      <input
+        id="firstname"
+        type="text"
+        name="firstname"
+        value={profileData.firstname}
+        onChange={handleChange}
+        required
+      />
     </div>
+
+    <div className="form-group">
+      <label htmlFor="lastname">Last Name:</label>
+      <input
+        id="lastname"
+        type="text"
+        name="lastname"
+        value={profileData.lastname}
+        onChange={handleChange}
+        required
+      />
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="dateOfBirth">Date of Birth:</label>
+      <input
+        id="dateOfBirth"
+        type="date"
+        name="dateOfBirth"
+        value={profileData.dateOfBirth}
+        onChange={handleChange}
+        required
+      />
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="gender">Gender:</label>
+      <select
+        id="gender"
+        name="gender"
+        value={profileData.gender}
+        onChange={handleChange}
+        required
+      >
+        <option value="">Select</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="password">Password:</label>
+      <input
+        id="password"
+        type="password"
+        name="password"
+        value={profileData.password}
+        onChange={handleChange}
+        required
+      />
+    </div>
+
+    <button className="submit-button" type="submit">
+      Update Profile
+    </button>
+  </form>
+  {responseMessage && <p>{responseMessage}</p>}
+</div>
+
   );
 };
 

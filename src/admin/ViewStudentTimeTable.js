@@ -78,16 +78,21 @@ const ViewStudentTimeTable = () => {
               </tr>
             </thead>
             <tbody>
-              {timetableEntries.map((entry, index) => (
-                <tr key={index}>
-                  <td>{entry.dayOfWeek}</td>
-                  <td>{entry.period.startTime} - {entry.period.endTime}</td>
-                  <td>{entry.classroom.roomNumber}</td>
-                  <td>{entry.course.courseName}</td>
-                  <td>{entry.faculty.firstname} {entry.faculty.lastname}</td>
-                </tr>
-              ))}
-            </tbody>
+  {timetableEntries.map((entry) => (
+    <tr key={entry.id}> {/* Use a unique field like `entry.id` */}
+      <td>{entry.dayOfWeek}</td>
+      <td>
+        {entry.period.startTime} - {entry.period.endTime}
+      </td>
+      <td>{entry.classroom.roomNumber}</td>
+      <td>{entry.course.courseName}</td>
+      <td>
+        {entry.faculty.firstname} {entry.faculty.lastname}
+      </td>
+    </tr>
+  ))}
+</tbody>
+
           </table>
         </div>
       )}

@@ -13,7 +13,7 @@ export default function ViewAssignedCourse() {
   // Retrieve studentId from sessionStorage on component mount
   useEffect(() => {
     const user = JSON.parse(sessionStorage.getItem('user'));
-    if (user && user.studentId) {
+    if (user) {
       setStudentId(user.studentId);
     } else {
       setMessage('No session found. Please log in to view your courses and internals.');
@@ -101,15 +101,16 @@ export default function ViewAssignedCourse() {
             </tr>
           </thead>
           <tbody>
-            {courses.map((course, index) => (
-              <tr key={index}>
-                <td >{course.course.courseCode}</td>
-                <td >{course.course.courseName}</td>
-                <td >{`${course.faculty.firstname} ${course.faculty.lastname}`}</td>
-                <td >{course.section.sectionno}</td>
-              </tr>
-            ))}
-          </tbody>
+  {courses.map((course) => (
+    <tr key={course.course.courseCode}>
+      <td>{course.course.courseCode}</td>
+      <td>{course.course.courseName}</td>
+      <td>{`${course.faculty.firstname} ${course.faculty.lastname}`}</td>
+      <td>{course.section.sectionno}</td>
+    </tr>
+  ))}
+</tbody>
+
         </table>
       )}
 
@@ -131,22 +132,23 @@ export default function ViewAssignedCourse() {
               </tr>
             </thead>
             <tbody>
-              {internalsList.map((internal, index) => (
-                <tr key={index}>
-                  <td >{internal.course.courseCode}</td>
-                  <td >{internal.course.courseName}</td>
-                  <td >{internal.assignments}</td>
-                  <td >{internal.quizzes}</td>
-                  <td >{internal.attendance}</td>
-                  <td >{internal.moocs}</td>
-                  <td >{internal.insemTheory}</td>
-                  <td >{internal.insemLab}</td>
-                  <td >
-                    {internal.assignments + internal.moocs + internal.insemTheory + internal.insemLab + internal.quizzes + internal.attendance}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+  {internalsList.map((internal) => (
+    <tr key={internal.course.courseCode}>
+      <td>{internal.course.courseCode}</td>
+      <td>{internal.course.courseName}</td>
+      <td>{internal.assignments}</td>
+      <td>{internal.quizzes}</td>
+      <td>{internal.attendance}</td>
+      <td>{internal.moocs}</td>
+      <td>{internal.insemTheory}</td>
+      <td>{internal.insemLab}</td>
+      <td>
+        {internal.assignments + internal.moocs + internal.insemTheory + internal.insemLab + internal.quizzes + internal.attendance}
+      </td>
+    </tr>
+  ))}
+</tbody>
+
           </table>
           <p style={{ ...styles.message, fontWeight: 'bold' }}>
             Total Marks: {totalMarks}

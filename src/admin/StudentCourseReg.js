@@ -126,7 +126,7 @@ export default function StudentCourseReg() {
                     <strong>LTPS Structure:</strong> {entry.course.courseCredits}
                   </p>
 
-                  <label className="student-course-reg-card-label">Select Section:</label>
+                  <p className="student-course-reg-card-label">Select Section:</p>
                   <select
                     className="student-course-reg-card-select"
                     onChange={(e) =>

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import config from '../config';
 
-import StudentNavBar from './StudentNavBar';
 
 function GetNotifications() {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:2001/student/getnotifications")
+    fetch(`${config.url}/student/getnotifications`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch notifications");
@@ -28,21 +28,21 @@ function GetNotifications() {
 
   return (
     <div>
-      
-      <div className="notifications-container">
-        <h2>Recent Notifications</h2>
-        {notifications.length === 0 ? (
-          <p>No notifications available</p>
-        ) : (
-          notifications.map((notification, index) => (
-            <div className="notification-card" key={index}>
-              <h3>{notification.mesg}</h3>
-              <p><strong>Scheduled Time:</strong> {formatDate(notification.scheduledTime)}</p>
-            </div>
-          ))
-        )}
-      </div>
-    </div>
+  <div className="notifications-container">
+    <h2>Recent Notifications</h2>
+    {notifications.length === 0 ? (
+      <p>No notifications available</p>
+    ) : (
+      notifications.map((notification) => (
+        <div className="notification-card" key={notification.id}>
+          <h3>{notification.mesg}</h3>
+          <p><strong>Scheduled Time:</strong> {formatDate(notification.scheduledTime)}</p>
+        </div>
+      ))
+    )}
+  </div>
+</div>
+
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './FacultyNotifications.css';
-import FacultyNavBar from './FacultyNavBar';
+
 import config from '../config';
 
 function GetNotifications() {
@@ -29,21 +29,23 @@ function GetNotifications() {
 
   return (
     <div>
-      
-      <div className="notifications-container">
-        <h2>Recent Notifications</h2>
-        {notifications.length === 0 ? (
-          <p>No notifications available</p>
-        ) : (
-          notifications.map((notification, index) => (
-            <div className="notification-card" key={index}>
-              <h3>{notification.mesg}</h3>
-              <p><strong>Scheduled Time:</strong> {formatDate(notification.scheduledTime)}</p>
-            </div>
-          ))
-        )}
-      </div>
-    </div>
+  <div className="notifications-container">
+    <h2>Recent Notifications</h2>
+    {notifications.length === 0 ? (
+      <p>No notifications available</p>
+    ) : (
+      notifications.map((notification) => (
+        <div className="notification-card" key={notification.id}>
+          <h3>{notification.mesg}</h3>
+          <p>
+            <strong>Scheduled Time:</strong> {formatDate(notification.scheduledTime)}
+          </p>
+        </div>
+      ))
+    )}
+  </div>
+</div>
+
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import StudentNavBar from '../student/StudentNavBar';
 import FacultyNavBar from './FacultyNavBar';
@@ -7,23 +7,26 @@ import config from '../config';
 
 
 const FacultyTicketIssues = () => {
-    const user = JSON.parse(sessionStorage.getItem('user')) || {};
+    const user = useMemo(() => {
+      return JSON.parse(sessionStorage.getItem("user")) || {};
+    }, []); // Empty dependency array ensures this only runs once
+  
     const [formData, setFormData] = useState({
-        typeofissue: "",
-        issuemsg: "",
-        userid: "" // Initialize as an empty string
+      typeofissue: "",
+      issuemsg: "",
+      userid: "" // Initialize as an empty string
     });
     const [message, setMessage] = useState("");
-
+  
     useEffect(() => {
-        // Ensure userid is set in formData when user object is available
-        if (user.userid) {
-            setFormData(prevState => ({
-                ...prevState,
-                userid: user.userid
-            }));
-        }
-    }, [user]);
+      // Ensure userid is set in formData when user object is available
+      if (user.userid) {
+        setFormData((prevState) => ({
+          ...prevState,
+          userid: user.userid
+        }));
+      }
+    }, [user.userid]); 
 
     const handleChange = (e) => {
         const { name, value } = e.target;

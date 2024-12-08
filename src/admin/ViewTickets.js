@@ -25,9 +25,11 @@ export default function ViewATickets() {
   };
 
   const deleteTicket = (tid) => {
+    console.log(tid);
     axios
       .delete(`${config.url}/admin/deleteticket/${tid}`)
       .then(() => {
+        
         alert(`Ticket ID ${tid} deleted successfully!`);
         fetchTickets(); // Refresh the ticket list after deletion
       })

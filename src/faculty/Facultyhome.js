@@ -175,18 +175,17 @@ export default function Facultyhome() {
         <div className="calendar-grid">
           {days.map((day) => (
             <div
-              key={day}
-              className={`calendar-cell ${
-                importantDates[month.name] && importantDates[month.name].some(d => d.date === day) ? 'highlighted' : ''
-              }`}
-              title={
-                importantDates[month.name] && importantDates[month.name].some(d => d.date === day)
-                  ? importantDates[month.name].find(d => d.date === day).event
-                  : ''
-              }
-            >
-              {day}
-            </div>
+            key={day}
+            className={`calendar-cell ${
+              importantDates[month.name]?.some(d => d.date === day) ? 'highlighted' : ''
+            }`}
+            title={
+              importantDates[month.name]?.find(d => d.date === day)?.event || ''
+            }
+          >
+            {day}
+          </div>
+          
           ))}
         </div>
       </div>

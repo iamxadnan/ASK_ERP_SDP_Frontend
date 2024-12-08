@@ -12,7 +12,7 @@ const RegisterHosteler = () => {
 
     useEffect(() => {
         const user = JSON.parse(sessionStorage.getItem('user'));
-        if (user && user.userid) {
+        if (user) {
             setUserid(user.studentId);
         } else {
             setMessage('User not found. Please log in.');

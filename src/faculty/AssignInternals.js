@@ -14,7 +14,7 @@ function FacultyAssignedCourses() {
 
   useEffect(() => {
     const user = JSON.parse(sessionStorage.getItem("user"));
-    if (user && user.facultyId) {
+    if (user) {
       setFacultyId(user.facultyId);
     } else {
       setMessage("Faculty ID not found in session. Please log in again.");
