@@ -54,7 +54,6 @@ const MainNavBar = () => {
         <div className="circle">
           <img src="./images/logo-removebg-preview.png" alt="Logo" />
         </div>
-        <h1 style={{marginLeft:"450px"}}>ERP System</h1>
         <nav>
           <ul>
             <li>

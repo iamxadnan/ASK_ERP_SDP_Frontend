@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
 import config from '../config';
 
-// export default function Login({ onAdminLogin, onFacultyLogin, onStudentLogin }) {
+
   export default function Login() {
 
   const [email, setEmail] = useState('');
@@ -24,17 +24,17 @@ import config from '../config';
 
       const user = response.data;
 
-      if (user && user.role) {
+      if (user.role) {
         sessionStorage.setItem('user', JSON.stringify(user)); // Save user to session storage
 
         if (user.role === 'ADMIN') {
-          //onAdminLogin();
+         
           navigate('/adminhome');
         } else if (user.role === 'FACULTY') {
-         // onFacultyLogin();
+        
           navigate('/facultyhome');
         } else if (user.role === 'STUDENT') {
-          //onStudentLogin();
+          
           navigate('/studenthome');
         }
       } else {
@@ -77,21 +77,27 @@ import config from '../config';
                   onChange={(e) => setPassword(e.target.value)}
                   required 
                 />
-                <span 
-                  className="toggle-password" 
-                  onClick={togglePasswordVisibility}
-                  style={{ cursor: 'pointer' }}
-                >
-                  {showPassword ? "🙈" : "👁️"}
-                </span>
+
+                <button 
+                className="toggle-password" 
+                onClick={togglePasswordVisibility} 
+                style={{ cursor: 'pointer', background: 'none', border: 'none' }} 
+                aria-label="Toggle password visibility"
+              >
+                {/* Icon or text for toggling */}
+              </button>
               </div>
 
               <button type="submit" className="login-btn">LOGIN</button>
             </form>
 
             {message && <p align="center" style={{ color: 'red' }}>{message}</p>}
-            <p align="center">New User? <a href='/userregistration'>Register here</a></p>
-            <p align="center">Forgot Password? <a href='/forgotpass'>Forgot Password</a></p>
+            <p align="center">
+  New User? <Link to="/userregistration">Register here</Link>
+</p>
+<p align="center">
+  Forgot Password? <Link to="/forgotpass">Forgot Password</Link>
+</p>
           </div>
 
           <div className="login-right">

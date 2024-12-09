@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import config from "../config";
+import AdminNavBar from "./AdminNavBar";
 
 
 
@@ -25,8 +26,9 @@ const AvailableRooms = () => {
   }, []);
 
   return (
-    <div>
-    <div >
+    <div style={{marginTop:'70px'}}>
+      <AdminNavBar/>
+    <div style={{marginTop:'70px'}} >
       <h2>Available Rooms</h2>
       {error && <p className="error-message">{error}</p>}
       {!error && rooms.length === 0 && <p>No available rooms found.</p>}

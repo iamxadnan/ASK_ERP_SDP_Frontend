@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import config from '../config';
+import AdminNavBar from './AdminNavBar';
+
 
 
 const ViewAllCourses = () => {
@@ -30,7 +32,7 @@ const ViewAllCourses = () => {
 
   return (
     <div>
-      
+      <AdminNavBar/>
       <div style={{ marginTop: '100px', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
   <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Courses</h1>
   {(() => {

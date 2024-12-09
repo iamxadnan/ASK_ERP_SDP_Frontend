@@ -62,7 +62,7 @@ export default function FacultyNavBar() {
           
           <li className="lio"><Link to="/getfacultynotification">GET NOTIFICATION</Link></li>
           <li className="lio"><Link to="/riseticket">TICKET ISSUES</Link></li>
-          <li className="lio"><a href="/assigninternals">ASSIGN Internals</a></li>
+          <li className="lio"><Link to="/assigninternals">ASSIGN Internals</Link></li>
         </ul>
       </nav>
     </div>
