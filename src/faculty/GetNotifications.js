@@ -6,7 +6,7 @@ import config from '../config';
 function GetNotifications() {
   const [notifications, setNotifications] = useState([]);
 
-  useEffect(() => {
+  
     fetch(`${config.url}/faculty/getnotifications`)
       .then((response) => {
         if (!response.ok) {
@@ -16,7 +16,6 @@ function GetNotifications() {
       })
       .then((data) => setNotifications(data))
       .catch((error) => console.error("Error fetching notifications:", error));
-  }, []);
 
   const formatDate = (dateArray) => {
     if (!dateArray || dateArray.length !== 5) {
