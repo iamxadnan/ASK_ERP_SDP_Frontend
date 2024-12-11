@@ -42,7 +42,7 @@ import config from '../config';
       }
     } catch (error) {
       console.error("Login error:", error);
-      setMessage("An error occurred during login.");
+      setMessage("An error occurred during login. Make sure admin approved your registration request and then try to login");
     }
   };
 
