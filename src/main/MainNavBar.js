@@ -60,7 +60,7 @@ const MainNavBar = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/ViewRegistrationRequests">Services</Link>
+              <Link to="/regrequests">Services</Link>
             </li>
             <li>
               <Link to="/aboutus">About Us</Link>
